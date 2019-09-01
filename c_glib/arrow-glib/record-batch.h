@@ -22,6 +22,7 @@
 #include <arrow-glib/array.h>
 #include <arrow-glib/schema.h>
 
+
 G_BEGIN_DECLS
 
 #define GARROW_TYPE_RECORD_BATCH                \
@@ -96,5 +97,17 @@ GArrowRecordBatch *garrow_record_batch_add_column(GArrowRecordBatch *record_batc
 GArrowRecordBatch *garrow_record_batch_remove_column(GArrowRecordBatch *record_batch,
                                                      guint i,
                                                      GError **error);
+
+GArrowBuffer *GSerializeRecordBatch(GArrowRecordBatch *record_batch);
+GArrowRecordBatch *GDeSerializeRecordBatch(GArrowBuffer *buffer, GArrowSchema *schema);
+
+/////////////////////////
+void arrow_builders_start(void);
+GArrowSchema* getSchema(void);
+GArrowRecordBatch* create_arrow_record_batch(gint64 count, GArrowArray *array_qName,GArrowArray *array_flag,GArrowArray *array_rID,GArrowArray *array_beginPos,GArrowArray *array_mapQ,
+GArrowArray* array_cigar,GArrowArray *array_rNextId,GArrowArray *array_pNext,GArrowArray *array_tLen,GArrowArray *array_seq,GArrowArray *array_qual,GArrowArray *array_tags);
+gboolean arrow_builders_append(gint32 builder_id, const gchar *qName, gint32 flag, gint32 rID, gint32 beginPos, gint32 mapQ, const gchar *cigar, gint32 rNextId, gint32 pNext, gint32 tLen, const gchar *seq, const gchar *qual, const gchar *tags);
+GArrowRecordBatch* arrow_builders_finish(gint32 builder_id, gint64 count);
+/////////////////////////
 
 G_END_DECLS
