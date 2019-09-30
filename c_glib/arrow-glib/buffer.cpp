@@ -330,6 +330,15 @@ garrow_buffer_get_size(GArrowBuffer *buffer)
   return arrow_buffer->size();
 }
 
+const guint8 *
+garrow_buffer_get_databytes(GArrowBuffer *buffer)
+{
+  auto arrow_buffer = garrow_buffer_get_raw(buffer);
+  return arrow_buffer->data();
+
+}
+
+
 /**
  * garrow_buffer_get_parent:
  * @buffer: A #GArrowBuffer.
