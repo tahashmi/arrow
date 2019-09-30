@@ -47,6 +47,7 @@ gint64         garrow_buffer_get_capacity (GArrowBuffer *buffer);
 GBytes        *garrow_buffer_get_data     (GArrowBuffer *buffer);
 GBytes        *garrow_buffer_get_mutable_data(GArrowBuffer *buffer);
 gint64         garrow_buffer_get_size     (GArrowBuffer *buffer);
+const guint8 *garrow_buffer_get_databytes     (GArrowBuffer *buffer);
 GArrowBuffer  *garrow_buffer_get_parent   (GArrowBuffer *buffer);
 
 GArrowBuffer  *garrow_buffer_copy         (GArrowBuffer *buffer,
