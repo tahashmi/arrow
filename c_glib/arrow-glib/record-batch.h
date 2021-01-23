@@ -100,7 +100,7 @@ GArrowRecordBatch *garrow_record_batch_remove_column(GArrowRecordBatch *record_b
 
 GArrowBuffer *GSerializeRecordBatch(GArrowRecordBatch *record_batch);
 GArrowRecordBatch *GDeSerializeRecordBatch(GArrowBuffer *buffer, GArrowSchema *schema);
-
+/*
 /////////////////////////
 void arrow_builders_start(void);
 GArrowSchema* getSchema(void);
@@ -109,5 +109,12 @@ GArrowArray* array_cigar,GArrowArray *array_rNextId,GArrowArray *array_pNext,GAr
 gboolean arrow_builders_append(gint32 builder_id, const gchar *qName, gint32 flag, gint32 rID, gint32 beginPos, gint32 mapQ, const gchar *cigar, gint32 rNextId, gint32 pNext, gint32 tLen, const gchar *seq, const gchar *qual, const gchar *tags);
 GArrowRecordBatch* arrow_builders_finish(gint32 builder_id, gint64 count);
 /////////////////////////
-
+*/
+/////////////////////////
+void arrow_builders_start(void);
+GArrowSchema* getSchema(void);
+GArrowRecordBatch* create_arrow_record_batch(gint64 count,GArrowArray *array_beginPos,GArrowArray *array_sam);
+gboolean arrow_builders_append(gint32 builder_id, gint32 beginPos, const gchar *sam);
+GArrowRecordBatch* arrow_builders_finish(gint32 builder_id, gint64 count);
+/////////////////////////
 G_END_DECLS
